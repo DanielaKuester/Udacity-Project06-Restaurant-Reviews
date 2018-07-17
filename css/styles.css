@@ -317,8 +317,8 @@ nav h1 a {
     align-self: center;
 		position: relative;
     height: 300px;
-    width: 98%;
-		margin: auto;
+    width: 100%;
+		margin: 0;
 		padding-top: 50px;
   }
 	.filter-options {
