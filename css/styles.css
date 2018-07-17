@@ -23,7 +23,7 @@ a {
 }
 a:hover, a:focus {
 	color: #3397db;
-	text-decoration: none;
+	text-decoration: underline;
 }
 a img{
 	border: none 0px #fff;
@@ -187,7 +187,10 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
 }
-
+#restaurants-list li a:hover {
+	text-decoration: underline;
+	background-color: #70182a;
+}
 /* ====================== Restaurant Details ====================== */
 .inside header {
   position: fixed;
@@ -331,7 +334,7 @@ nav h1 a {
 		padding: 0;
 	}
   .inside #reviews-container {
-    width: 90%;
+    width: 85%;
     margin: auto;
   }
 	#reviews-list {
