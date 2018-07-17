@@ -271,7 +271,7 @@ nav h1 a {
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
-  width: 85%;
+  width: 80%;
 }
 #reviews-list li p {
   margin: 0 0 10px;
@@ -282,18 +282,70 @@ nav h1 a {
 
 /* ====================== Responsive Design ====================== */
 /* Make site responsive to mobile devices */
-/*
-@media screen and (max-width: 900px) {
+
+@media screen and (max-width: 1000px) {
 	.inside {
-		display: flex;
-		flex-direction: column;
-		width: 90%;
+    display: flex;
+    flex-direction: row;
+		align-items: center;
+    width: 100%;
+  }
+  .inside header,
+		nav {
+    order: 0;
+    width: 100%;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+  header #breadcrumb {
+    order: 2;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+  .inside #map-container,
+	.inside #map {
+    order: 1;
+    align-self: center;
+		position: relative;
+    height: 300px;
+    width: 98%;
+		margin: auto;
+		padding-top: 50px;
+  }
+  .inside #restaurant-container {
+    order: 3;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+		padding: 160px 0 0 0;
+  }
+	#restaurant-img,
+	#restaurant-cuisine {
+		width: 100%;
+		margin: 0;
+		padding: 0;
 	}
-	#reviews-container {
-	  width: 90%;
-	}
-	#map-container {
-		width: 90%;
-	}
+  .inside #reviews-container {
+    width: 90%;
+    margin: auto;
+  }
+	#reviews-list {
+    width: 100%;
+		margin: auto;
+  }
+	#reviews-container h2 {
+    text-align: center;
+  }
+  .inside #footer {
+    order: 4;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+  }
 }
-*/
