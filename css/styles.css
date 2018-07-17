@@ -319,6 +319,11 @@ nav h1 a {
 		margin: auto;
 		padding-top: 50px;
   }
+	.filter-options {
+		display: flex;
+		flex-direction: column;
+	  align-items: center;
+	}
   .inside #restaurant-container {
     order: 3;
     position: relative;
