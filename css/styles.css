@@ -301,7 +301,16 @@ nav h1 a {
 	letter-spacing: 10px;
 	padding: 2px 0;
 	text-align: center;
-	text-transform: uppercase;
+}
+.date,
+.rating,
+.comments {
+	padding: 0 20px;
+	text-align: justify;
+}
+.date,
+.rating {
+	font-weight: bold;
 }
 
 /* ====================== Responsive Design ====================== */
