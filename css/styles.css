@@ -138,6 +138,9 @@ nav h1 a {
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
@@ -302,7 +305,7 @@ nav h1 a {
 /* ====================== Responsive Design ====================== */
 /* Make site responsive to mobile devices */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 750px) {
 /* ====================== Common Design ====================== */
 	.inside {
     display: flex;
@@ -391,5 +394,12 @@ nav h1 a {
   }
 	#reviews-list li {
 	  width: 98%;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	#restaurants-list {
+		margin-left: 160px;
+		margin-right: 100px;
 	}
 }
