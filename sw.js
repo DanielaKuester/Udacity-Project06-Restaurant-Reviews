@@ -55,8 +55,15 @@ self.addEventListener('activate', function(event) {
 	console.log("[Service Worker] Activated");
 
 	event.waitUntil(
+		/**
+		 * @description Loop through all the cache names.
+		 */
 		caches.keys().then(function(cacheNames) {
 			return Promise.all(cacheNames.map(function(thisCacheName) {
+				/**
+				 * @description Compare the cache names. If they are not equal, delete
+				 * the old caches to update the cache with the new caches.
+				 */
 				if (thisCacheName !== cacheName) {
 					console.log("[Service Worker] Removing Cached Files from", thisCacheName);
 					return caches.delete(thisCacheName);
