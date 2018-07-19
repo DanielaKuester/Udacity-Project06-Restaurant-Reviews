@@ -2,25 +2,25 @@
  * @description Step 3: Add the directories of the files that have to be cached.
  */
 
-var cacheName = "version-1";
+var cacheName = 'version-1';
 var cacheFiles = [
-	'./'
-	'./css/styles.css'
-	'./data/restaurants.json'
-	'./img/1.jpg'
-	'./img/2.jpg'
-	'./img/3.jpg'
-	'./img/4.jpg'
-	'./img/5.jpg'
-	'./img/6.jpg'
-	'./img/7.jpg'
-	'./img/8.jpg'
-	'./img/9.jpg'
-	'./img/10.jpg'
-	'./dbhelper.js'
-	'./main.js'
-	'./restaurant_info.js'
-	'./index.html'
+	'./',
+	'./styles.css',
+	'./data/restaurants.json',
+	'./img/1.jpg',
+	'./img/2.jpg',
+	'./img/3.jpg',
+	'./img/4.jpg',
+	'./img/5.jpg',
+	'./img/6.jpg',
+	'./img/7.jpg',
+	'./img/8.jpg',
+	'./img/9.jpg',
+	'./img/10.jpg',
+	'./dbhelper.js',
+	'./main.js',
+	'./restaurant_info.js',
+	'./index.html',
 	'./restaurant.html'
 ]
 
@@ -34,6 +34,21 @@ var cacheFiles = [
  * that the messages come directly from the service worker. */
 self.addEventListener('install', function(event) {
 	console.log("[Service Worker] Installed");
+
+	/**
+	 * @description The install has to wait until the promise within waitUntil()
+	 * is resolved
+	 */
+	event.waitUntil(
+		/**
+		 * @description The browser opens the caches corresponding to the cacheName
+		 * and adds all the files of the array "cacheFiles".
+		 */
+		caches.open(cacheName).then(function(cache) {
+			console.log("[Service Worker] Caching cacheFiles");
+			return cache.addAll(cacheFiles);
+		})
+	)
 })
 
 /**
