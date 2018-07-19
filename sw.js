@@ -1,4 +1,30 @@
 /**
+ * @description Step 3: Add the directories of the files that have to be cached.
+ */
+
+var cacheName = "version-1";
+var cacheFiles = [
+	'./'
+	'./css/styles.css'
+	'./data/restaurants.json'
+	'./img/1.jpg'
+	'./img/2.jpg'
+	'./img/3.jpg'
+	'./img/4.jpg'
+	'./img/5.jpg'
+	'./img/6.jpg'
+	'./img/7.jpg'
+	'./img/8.jpg'
+	'./img/9.jpg'
+	'./img/10.jpg'
+	'./dbhelper.js'
+	'./main.js'
+	'./restaurant_info.js'
+	'./index.html'
+	'./restaurant.html'
+]
+
+/**
  * @description Step 2: Add three event listeners for the different states of
  * the service worker: install, activate and fetch.
  *
