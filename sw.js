@@ -1,11 +1,8 @@
-/**
- * @description Step 3: Add the directories of the files that have to be cached.
- */
-
-var cacheName = 'version-1';
+var cacheName = "v1";
 var cacheFiles = [
+
 	'./',
-	'./styles.css',
+	'./css/styles.css',
 	'./data/restaurants.json',
 	'./img/1.jpg',
 	'./img/2.jpg',
@@ -17,9 +14,9 @@ var cacheFiles = [
 	'./img/8.jpg',
 	'./img/9.jpg',
 	'./img/10.jpg',
-	'./dbhelper.js',
-	'./main.js',
-	'./restaurant_info.js',
+	'./js/dbhelper.js',
+	'./js/main.js',
+	'./js/restaurant_info.js',
 	'./index.html',
 	'./restaurant.html'
 ]
@@ -41,8 +38,8 @@ self.addEventListener('install', function(event) {
 	 */
 	event.waitUntil(
 		/**
-		 * @description The browser opens the caches corresponding to the cacheName
-		 * and adds all the files of the array "cacheFiles".
+		 * @description Step 4: The browser opens the caches corresponding to the
+		 * cacheName and adds all the files of the array "cacheFiles".
 		 */
 		caches.open(cacheName).then(function(cache) {
 			console.log("[Service Worker] Caching cacheFiles");
@@ -56,6 +53,17 @@ self.addEventListener('install', function(event) {
  */
 self.addEventListener('activate', function(event) {
 	console.log("[Service Worker] Activated");
+
+	event.waitUntil(
+		caches.keys().then(function(cacheNames) {
+			return Promise.all(cacheNames.map(function(thisCacheName) {
+				if (thisCacheName !== cacheName) {
+					console.log("[Service Worker] Removing Cached Files from", thisCacheName);
+					return caches.delete(thisCacheName);
+				}
+			}))
+		})
+	)
 })
 
 /**
