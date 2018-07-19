@@ -209,3 +209,30 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+/**
+ * @description Since I am totally new to service workers, I use the following
+ * tutorial to learn and implement a very basic service worker in my project:
+ * https://www.youtube.com/watch?v=BfL3pprhnms
+ * I'll add comments to make sure that I understand what I am doing and why!
+ * I also change the variables to suit the needs of my project.
+ */
+
+/**
+ * @description Step 1: Check if the browser has/supports service workers
+ */
+if ('serviceWorker' in navigator) {
+	/**
+	 * @description Register the service worker and set the scope of it to the
+	 * whole directory in which the service worker is. */
+	navigator.serviceWorker
+		.register('./sw.js', { scope: './' })
+		// Check if the registration was successful
+		.then(function(registration) {
+			console.log("Service Worker registered", registration);
+		})
+		// Catch if there is an error
+		.catch(function(error) {
+			console.log("Service Worker failed to register", error);
+		})
+}
