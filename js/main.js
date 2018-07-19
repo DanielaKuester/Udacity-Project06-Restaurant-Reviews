@@ -219,7 +219,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
  */
 
 /**
- * @description Step 1: Check if the browser has/supports service workers
+ * @description Step 1: Check if the browser has/supports service workers.
+ * Step 2, 3, etc.: see sw.js
  */
 if ('serviceWorker' in navigator) {
 	/**
