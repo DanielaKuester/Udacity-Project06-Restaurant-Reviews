@@ -1,7 +1,7 @@
 var cacheName = "v1";
 var cacheFiles = [
 
-	'./',
+	'/',
 	'./css/styles.css',
 	'./data/restaurants.json',
 	'./img/1.jpg',
