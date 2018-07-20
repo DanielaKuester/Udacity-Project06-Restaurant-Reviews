@@ -2,23 +2,23 @@ var cacheName = "v1";
 var cacheFiles = [
 
 	'/',
-	'./css/styles.css',
-	'./data/restaurants.json',
-	'./img/1.jpg',
-	'./img/2.jpg',
-	'./img/3.jpg',
-	'./img/4.jpg',
-	'./img/5.jpg',
-	'./img/6.jpg',
-	'./img/7.jpg',
-	'./img/8.jpg',
-	'./img/9.jpg',
-	'./img/10.jpg',
-	'./js/dbhelper.js',
-	'./js/main.js',
-	'./js/restaurant_info.js',
-	'./index.html',
-	'./restaurant.html'
+	'/css/styles.css',
+	'/data/restaurants.json',
+	'/img/1.jpg',
+	'/img/2.jpg',
+	'/img/3.jpg',
+	'/img/4.jpg',
+	'/img/5.jpg',
+	'/img/6.jpg',
+	'/img/7.jpg',
+	'/img/8.jpg',
+	'/img/9.jpg',
+	'/img/10.jpg',
+	'/js/dbhelper.js',
+	'/js/main.js',
+	'/js/restaurant_info.js',
+	'/index.html',
+	'/restaurant.html'
 ]
 
 /**
@@ -84,22 +84,25 @@ self.addEventListener('fetch', function(event) {
 	 * URL/file match. Then respond appropriately to the outcome.
 	 */
 	event.respondWith(
-		caches.match(event.request).then(function(response) {
-			/**
-			 * @description If the requested URL/file is found in the cache, log out
-			 * a message and return the cached version.
-			 * There is no need to fetch it again!
-			 */
-			if (response) {
-				console.log("[ServiceWorker] Found in cache", event.request.url);
-				return response;
-			}
-			/**
-			 * @description If the requested URL/file is not in the cache yet, go
-			 * ahead and fetch the file!
-			 */
-			return fetch(event.request);
-		})
-
+		caches.match(event.request)
+			.then(function(response) {
+				/**
+				 * @description If the requested URL/file is found in the cache, log out
+				 * a message and return the cached version.
+				 * There is no need to fetch it again!
+				 */
+				 if (response) {
+					console.log("[ServiceWorker] Found in cache", event.request.url);
+					return response;
+				}
+				/**
+				 * @description If the requested URL/file is not in the cache yet, go
+				 * ahead and fetch the file!
+				 */
+				return fetch(event.request);
+			})
+			.catch(function(error) {
+				console.log("Error fetching and caching new data", error);
+			})
 	)
 })
