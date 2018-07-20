@@ -56,7 +56,8 @@ self.addEventListener('activate', function(event) {
 
 	event.waitUntil(
 		/**
-		 * @description Loop through all the cache names.
+		 * @description Loop through all the keys of the caches to compare them
+		 * later.
 		 */
 		caches.keys().then(function(cacheNames) {
 			return Promise.all(cacheNames.map(function(thisCacheName) {
@@ -78,4 +79,27 @@ self.addEventListener('activate', function(event) {
  */
 self.addEventListener('fetch', function(event) {
 	console.log("[Service Worker] Fetching", event.request.url);
+	/**
+	 * @description Check in the cache if the cached URL/file and the requested
+	 * URL/file match. Then respond appropriately to the outcome.
+	 */
+	event.respondWith(
+		caches.match(event.request).then(function(response) {
+			/**
+			 * @description If the requested URL/file is found in the cache, log out
+			 * a message and return the cached version.
+			 * There is no need to fetch it again!
+			 */
+			if (response) {
+				console.log("[ServiceWorker] Found in cache", event.request.url);
+				return response;
+			}
+			/**
+			 * @description If the requested URL/file is not in the cache yet, go
+			 * ahead and fetch the file!
+			 */
+			return fetch(event.request);
+		})
+
+	)
 })
